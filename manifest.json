@@ -10,7 +10,13 @@
     "default_path": "sidepanel.html"
   },
   "background": {
-    "service_worker": "service-worker.js"
+    "service_worker": "scripts/service-worker.js"
   },
-  "permissions": ["sidePanel", "tabs"]
+  "permissions": ["sidePanel", "tabs", "activeTab"],
+  "content_scripts" : [
+    {
+      "js": ["scripts/prime.js"],
+      "matches" : ["https://www.amazon.com/gp/video/detail/*"]
+    }
+  ]
 }
