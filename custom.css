@@ -2,41 +2,65 @@
 body {
   background-color: #ffffff; /* white */
   font-family: "Montserrat", sans-serif;
+  margin: 0;
+  padding: 0.5rem; /* optional padding for panel content */
 }
 
 /* Card background */
 .card {
   background-color: #ffffff; /* white */
+  border: 1px solid #e5e7eb; /* subtle border for contrast */
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* subtle shadow */
+  padding: 1rem;
+}
+
+/* Card header: title + subtitle */
+.card-header {
+  display: flex;
+  flex-direction: column;
+  padding-left: 12px; /* aligns both title and subtitle */
+  gap: 0.25rem; /* vertical spacing */
 }
 
 /* Card title */
 .card-title {
   color: #0369a1; /* dark blue */
+  margin: 0; /* remove default margin */
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+/* Subtitle under title */
+.subtitle {
+  margin: 0;
+  color: #fa2852; /* custom subtitle color */
+  font-size: 0.9rem;
 }
 
 /* Badges with custom colors */
 .badge-netflix {
-  background-color: #e50914; /* Netflix red */
+  background-color: #e50914;
   color: white;
 }
 
 .badge-disney {
-  background-color: #0063e5; /* Disney+ blue */
+  background-color: #0063e5;
   color: white;
 }
 
 .badge-peacock {
-  background-color: #10277c; /* Peacock dark blue */
+  background-color: #10277c;
   color: white;
 }
 
 .badge-hulu {
-  background-color: #1ce783; /* Hulu green */
+  background-color: #1ce783;
   color: white;
 }
 
 .badge-hbo {
-  background-color: #654bff; /* HBO purple */
+  background-color: #654bff;
   color: white;
 }
 
