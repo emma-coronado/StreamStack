@@ -5,8 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Stream Stack</title>
 
-  <!-- DaisyUI CSS (includes Tailwind styles) -->
+  <!-- DaisyUI CSS -->
   <link rel="stylesheet" href="daisyui@5.css" />
+  <!-- Custom CSS -->
   <link rel="stylesheet" href="custom.css" />
 </head>
 
@@ -19,7 +20,7 @@
     </div>
 
     <!-- Search bar -->
-    <div class="form-control">
+    <div class="form-control mb-6">
       <div class="flex">
         <span>🔍</span>
         <input type="text" placeholder="Search watchlist..." class="input" />
@@ -27,20 +28,32 @@
     </div>
 
     <!-- Tabs -->
-    <div class="tabs tabs-boxed mt-6">
-      <a class="tab tab-active">All</a>
-      <a class="tab">To Watch</a>
-      <a class="tab">Watched</a>
-    </div>
+    <div class="tabs">
+      <a class="tab tab-active" data-filter="all">All</a>
+      <a class="tab" data-filter="to-watch">To Watch</a>
+      <a class="tab" data-filter="watched">Watched</a>
+    </div>    
 
-    <!-- Menu -->
-    <ul class="menu bg-base-100 w-full mt-4 rounded-box">
-      <li><a><span class="badge badge-netflix">Netflix</span> Stranger Things</a></li>
-      <li><a><span class="badge badge-disney">Disney+</span> The Mandalorian</a></li>
-      <li><a><span class="badge badge-peacock">Peacock</span> Oppenheimer</a></li>
-      <li><a><span class="badge badge-hulu">Hulu</span> The Last of Us</a></li>
-      <li><a><span class="badge badge-hbo">HBO Max</span> Dune: Part Two</a></li>
-    </ul>
+    <!-- List entries -->
+    <div class="list flex flex-col gap-3">
+      <div class="list-item" data-status="to-watch">
+        <span class="entry-title">Stranger Things</span>
+        <span class="badge badge-netflix">Netflix</span>
+      </div>
+      <div class="list-item" data-status="to-watch">
+        <span class="entry-title">The Terminal List</span>
+        <span class="badge badge-prime">Prime</span>
+      </div>
+      <div class="list-item" data-status="watched">
+        <span class="entry-title">Peacock Original Movie</span>
+        <span class="badge badge-peacock">Peacock</span>
+      </div>
+      <div class="list-item" data-status="to-watch">
+        <span class="entry-title">Another Netflix Show</span>
+        <span class="badge badge-netflix">Netflix</span>
+      </div>
+    </div>    
   </div>
+  <script src="tabs.js"></script>
 </body>
 </html>
