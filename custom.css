@@ -92,13 +92,13 @@ body {
   margin-bottom: 1rem;
 }
 
-/* List container */
+/* List container scrollable */
 .list {
-  width: 100%;
-  box-sizing: border-box;
+  flex: 1 1 auto;      /* take up remaining space */
+  overflow-y: auto;    /* scroll if content is taller than available space */
   display: flex;
   flex-direction: column;
-  gap: 1rem; /* increase the space between list items */
+  gap: 1rem;           /* spacing between items */
 }
 
 
@@ -180,6 +180,43 @@ body {
 .tab-active {
   background-color: #000000;   /* black background */
   color: #ffffff;              /* white text */
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid #f0f1f2;
+  margin-top: 0.1rem;   /* space above the line */
+  margin-bottom: 1rem;   /* more space below the line */
+  width: 100%;
+}
+
+/* Footer fixed at bottom inside card */
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1rem;
+  border-top: 1px solid #f0f1f2;
+  margin-top: 1rem;
+  flex-shrink: 0;       /* prevent shrinking when list scrolls */
+}
+
+/* Left side: item count */
+.item-count {
+  font-size: 0.85rem;
+  color: #6b7280; /* gray text */
+}
+
+/* Right side: settings icon */
+.settings {
+  font-size: 1rem;
+  cursor: pointer;
+  color: #1f2937; /* dark text */
+  transition: color 0.2s;
+}
+
+.settings:hover {
+  color: #000000; /* darker on hover */
 }
 
 /* Optional: font-face for Montserrat */

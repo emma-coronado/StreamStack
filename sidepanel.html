@@ -30,9 +30,12 @@
     <!-- Tabs -->
     <div class="tabs">
       <a class="tab tab-active" data-filter="all">All</a>
-      <a class="tab" data-filter="to-watch">To Watch</a>
+      <a class="tab" data-filter="to-watch">Unwatched</a>
       <a class="tab" data-filter="watched">Watched</a>
     </div>    
+
+    <!-- Divider line -->
+    <hr class="divider" />
 
     <!-- List entries -->
     <div class="list flex flex-col gap-3">
@@ -52,7 +55,25 @@
         <span class="entry-title">Another Netflix Show</span>
         <span class="badge badge-netflix">Netflix</span>
       </div>
-    </div>    
+      <div class="list-item" data-status="to-watch">
+        <span class="entry-title">Stranger Things</span>
+        <span class="badge badge-netflix">Netflix</span>
+      </div>
+      <div class="list-item" data-status="to-watch">
+        <span class="entry-title">Stranger Things</span>
+        <span class="badge badge-netflix">Netflix</span>
+      </div>
+      <div class="list-item" data-status="to-watch">
+        <span class="entry-title">Stranger Things</span>
+        <span class="badge badge-netflix">Netflix</span>
+      </div>
+    </div>  
+    <!-- Footer -->
+    <div class="card-footer">
+      <span class="item-count">4 items</span>
+      <span class="settings">⚙️</span>
+    </div>
+  
   </div>
   <script src="tabs.js"></script>
 </body>
