@@ -1,54 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Stream Stack</title>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stream Stack</title>
 
-    <!-- DaisyUI CSS -->
-    <link rel="stylesheet" href="daisyui@5.css" />
+  <!-- DaisyUI CSS (includes Tailwind styles) -->
+  <link rel="stylesheet" href="daisyui@5.css" />
+  <link rel="stylesheet" href="custom.css" />
+</head>
 
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="custom.css" />
-  </head>
-
-  <body>
-    <div class="card">
-      <!-- Header: Title + Subtitle -->
-      <div class="card-header">
-        <h2 class="card-title">Stream Stack</h2>
-        <p class="subtitle">4 items to watch</p>
-      </div>
-
-      <!-- Modern Search Bar -->
-      <div class="form-control mt-6">
-        <div class="flex">
-          <span class="bg-gray-200 px-3 rounded-l-md flex items-center justify-center">
-            🔍
-          </span>
-          <input
-            type="text"
-            placeholder="Search watchlist..."
-            class="input flex-1 rounded-r-md border-none bg-gray-200"
-          />
-        </div>
-      </div>
-
-      <!-- Tabs -->
-      <div class="tabs tabs-boxed mt-4">
-        <a class="tab tab-active">All</a>
-        <a class="tab">To Watch</a>
-        <a class="tab">Watched</a>
-      </div>
-
-      <!-- Watchlist Menu -->
-      <ul class="menu bg-base-100 w-full mt-4 rounded-box">
-        <li><a><span class="badge badge-netflix">Netflix</span> Stranger Things</a></li>
-        <li><a><span class="badge badge-disney">Disney+</span> The Mandalorian</a></li>
-        <li><a><span class="badge badge-peacock">Peacock</span> Oppenheimer</a></li>
-        <li><a><span class="badge badge-hulu">Hulu</span> The Last of Us</a></li>
-        <li><a><span class="badge badge-hbo">HBO Max</span> Dune: Part Two</a></li>
-      </ul>
+<body>
+  <div class="card">
+    <!-- Header -->
+    <div class="card-header">
+      <h2 class="card-title">Stream Stack</h2>
+      <p class="subtitle">4 items to watch</p>
     </div>
-  </body>
+
+    <!-- Search bar -->
+    <div class="form-control">
+      <div class="flex">
+        <span>🔍</span>
+        <input type="text" placeholder="Search watchlist..." class="input" />
+      </div>
+    </div>
+
+    <!-- Tabs -->
+    <div class="tabs tabs-boxed mt-6">
+      <a class="tab tab-active">All</a>
+      <a class="tab">To Watch</a>
+      <a class="tab">Watched</a>
+    </div>
+
+    <!-- Menu -->
+    <ul class="menu bg-base-100 w-full mt-4 rounded-box">
+      <li><a><span class="badge badge-netflix">Netflix</span> Stranger Things</a></li>
+      <li><a><span class="badge badge-disney">Disney+</span> The Mandalorian</a></li>
+      <li><a><span class="badge badge-peacock">Peacock</span> Oppenheimer</a></li>
+      <li><a><span class="badge badge-hulu">Hulu</span> The Last of Us</a></li>
+      <li><a><span class="badge badge-hbo">HBO Max</span> Dune: Part Two</a></li>
+    </ul>
+  </div>
+</body>
 </html>
