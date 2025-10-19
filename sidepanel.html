@@ -1,15 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Stream Stack</title>
-        <link rel="stylesheet" href="style.css">
-        <link rel="stylesheet" href="daisyUI/daisyui@5.css">
-    </head>
-    <body>
-        <h1>Hello World</h1>
-        
-        <script src="daisyUI/tailwindcss_browser@4.js"></script>
-    </body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stream Stack</title>
+
+    <!-- DaisyUI CSS (includes Tailwind styles) -->
+    <link rel="stylesheet" href="daisyui@5.css" />
+    <link rel="stylesheet" href="daisyui@5.css" />
+    <link rel="stylesheet" href="custom.css" />
+
+  </head>
+
+  <body class="bg-base-200 p-4">
+      <div class="card-body">
+        <h2 class="card-title">Stream Stack</h2>
+        <p>4 items to watch</p>
+
+        <input
+          type="text"
+          placeholder="Search watchlist..."
+          class="input input-bordered w-full mt-2"
+        />
+
+        <div class="tabs tabs-boxed mt-4">
+          <a class="tab tab-active">All</a>
+          <a class="tab">To Watch</a>
+          <a class="tab">Watched</a>
+        </div>
+
+        <ul class="menu bg-base-100 w-full mt-4 rounded-box">
+          <li><a><span class="badge badge-error">Netflix</span> Stranger Things</a></li>
+          <li><a><span class="badge badge-info">Disney+</span> The Mandalorian</a></li>
+          <li><a><span class="badge badge-warning">Peacock</span> Oppenheimer</a></li>
+          <li><a><span class="badge badge-success">Hulu</span> The Last of Us</a></li>
+          <li><a><span class="badge badge-primary">HBO Max</span> Dune: Part Two</a></li>
+        </ul>
+      </div>
+    </div>
+  </body>
 </html>

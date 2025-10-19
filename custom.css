@@ -1,0 +1,49 @@
+/* Apply font and white background to the whole panel */
+body {
+  background-color: #ffffff; /* white */
+  font-family: "Montserrat", sans-serif;
+}
+
+/* Card background */
+.card {
+  background-color: #ffffff; /* white */
+}
+
+/* Card title */
+.card-title {
+  color: #0369a1; /* dark blue */
+}
+
+/* Badges with custom colors */
+.badge-netflix {
+  background-color: #e50914; /* Netflix red */
+  color: white;
+}
+
+.badge-disney {
+  background-color: #0063e5; /* Disney+ blue */
+  color: white;
+}
+
+.badge-peacock {
+  background-color: #10277c; /* Peacock dark blue */
+  color: white;
+}
+
+.badge-hulu {
+  background-color: #1ce783; /* Hulu green */
+  color: white;
+}
+
+.badge-hbo {
+  background-color: #654bff; /* HBO purple */
+  color: white;
+}
+
+/* Custom font */
+@font-face {
+  font-family: "Montserrat";
+  src: url("fonts/Montserrat-VariableFont_wght.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
