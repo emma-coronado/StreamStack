@@ -64,3 +64,4 @@ document.addEventListener('click', (e) => {
     settingsPopup.style.display = 'none';
   }
 });
+

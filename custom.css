@@ -314,6 +314,7 @@ input:checked + .slider:before {
   transform: translateX(18px);
 }
 
+
 /* Optional: font-face for Montserrat */
 @font-face {
   font-family: "Montserrat";
@@ -321,6 +322,11 @@ input:checked + .slider:before {
   font-weight: 400;
   font-style: normal;
 }
+
+
+
+
+
 
 
 /* Dark Mode Styling */
