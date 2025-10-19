@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Stream Stack</title>
 
-    <!-- DaisyUI CSS (includes Tailwind base classes) -->
+    <!-- DaisyUI CSS -->
     <link rel="stylesheet" href="daisyui@5.css" />
 
     <!-- Custom CSS -->
@@ -14,23 +14,34 @@
 
   <body>
     <div class="card">
+      <!-- Header: Title + Subtitle -->
       <div class="card-header">
         <h2 class="card-title">Stream Stack</h2>
         <p class="subtitle">4 items to watch</p>
       </div>
 
-      <input
-        type="text"
-        placeholder="Search watchlist..."
-        class="input input-bordered w-full mt-4"
-      />
+      <!-- Modern Search Bar -->
+      <div class="form-control mt-6">
+        <div class="flex">
+          <span class="bg-gray-200 px-3 rounded-l-md flex items-center justify-center">
+            🔍
+          </span>
+          <input
+            type="text"
+            placeholder="Search watchlist..."
+            class="input flex-1 rounded-r-md border-none bg-gray-200"
+          />
+        </div>
+      </div>
 
+      <!-- Tabs -->
       <div class="tabs tabs-boxed mt-4">
         <a class="tab tab-active">All</a>
         <a class="tab">To Watch</a>
         <a class="tab">Watched</a>
       </div>
 
+      <!-- Watchlist Menu -->
       <ul class="menu bg-base-100 w-full mt-4 rounded-box">
         <li><a><span class="badge badge-netflix">Netflix</span> Stranger Things</a></li>
         <li><a><span class="badge badge-disney">Disney+</span> The Mandalorian</a></li>
