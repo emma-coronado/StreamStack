@@ -37,37 +37,59 @@
     <!-- Divider line -->
     <hr class="divider" />
 
-    <!-- List entries -->
+    <!-- Single unified list container -->
     <div class="list flex flex-col gap-3">
       <div class="list-item" data-status="to-watch">
-        <span class="entry-title">Stranger Things</span>
-        <span class="badge badge-netflix">Netflix</span>
+        <div class="entry-content">
+          <div class="left-side">
+            <span class="entry-title">Stranger Things</span>
+            <span class="badge badge-netflix">Netflix</span>
+          </div>
+          <img src="eye-open.png" alt="Toggle Watched" class="eye-icon" />
+        </div>
       </div>
+
       <div class="list-item" data-status="to-watch">
-        <span class="entry-title">The Terminal List</span>
-        <span class="badge badge-prime">Prime</span>
+        <div class="entry-content">
+          <div class="left-side">
+            <span class="entry-title">The Terminal List</span>
+            <span class="badge badge-prime">Prime</span>
+          </div>
+          <img src="eye-open.png" alt="Toggle Watched" class="eye-icon" />
+        </div>
       </div>
+
       <div class="list-item" data-status="watched">
-        <span class="entry-title">Peacock Original Movie</span>
-        <span class="badge badge-peacock">Peacock</span>
+        <div class="entry-content">
+          <div class="left-side">
+            <span class="entry-title">Peacock Original Movie</span>
+            <span class="badge badge-peacock">Peacock</span>
+          </div>
+          <img src="eye-closed.png" alt="Toggle Watched" class="eye-icon" />
+        </div>
       </div>
+
       <div class="list-item" data-status="to-watch">
-        <span class="entry-title">Another Netflix Show</span>
-        <span class="badge badge-netflix">Netflix</span>
+        <div class="entry-content">
+          <div class="left-side">
+            <span class="entry-title">Another Netflix Show</span>
+            <span class="badge badge-netflix">Netflix</span>
+          </div>
+          <img src="eye-open.png" alt="Toggle Watched" class="eye-icon" />
+        </div>
       </div>
+
       <div class="list-item" data-status="to-watch">
-        <span class="entry-title">Stranger Things</span>
-        <span class="badge badge-netflix">Netflix</span>
-      </div>
-      <div class="list-item" data-status="to-watch">
-        <span class="entry-title">Stranger Things</span>
-        <span class="badge badge-netflix">Netflix</span>
-      </div>
-      <div class="list-item" data-status="to-watch">
-        <span class="entry-title">Stranger Things</span>
-        <span class="badge badge-netflix">Netflix</span>
+        <div class="entry-content">
+          <div class="left-side">
+            <span class="entry-title">Yet Another Show</span>
+            <span class="badge badge-prime">Prime</span>
+          </div>
+          <img src="eye-open.png" alt="Toggle Watched" class="eye-icon" />
+        </div>
       </div>
     </div>  
+
     <!-- Footer -->
     <div class="card-footer">
       <span class="item-count">4 items</span>
@@ -75,12 +97,8 @@
 
       <!-- Settings popup -->
       <div class="settings-popup" id="settings-popup">
-        <div class="popup-item" id="empty-list">
-          🗑️ Empty List
-        </div>
-        <div class="popup-item" id="restore-list">
-          ♻️ Restore List
-        </div>
+        <div class="popup-item" id="empty-list">🗑️ Empty List</div>
+        <div class="popup-item" id="restore-list">♻️ Restore List</div>
         <div class="popup-item" id="dark-mode-item">
           🌙 Dark Mode
           <label class="switch">
@@ -91,7 +109,10 @@
       </div>
     </div>
   </div>
+
+  <!-- Scripts -->
   <script src="tabs.js"></script>
   <script src="settings.js"></script>
+  <script src="eyeToggle.js"></script>
 </body>
 </html>
