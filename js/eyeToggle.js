@@ -3,11 +3,11 @@ document.addEventListener("DOMContentLoaded", () => {
   
     eyeIcons.forEach(icon => {
       icon.addEventListener("click", () => {
-        if (icon.src.includes("eye-open.png")) {
-          icon.src = "eye-closed.png";
+        if (icon.src.includes("icons/eye-open.png")) {
+          icon.src = "icons/eye-closed.png";
           icon.closest(".list-item").dataset.status = "watched";
         } else {
-          icon.src = "eye-open.png";
+          icon.src = "icons/eye-open.png";
           icon.closest(".list-item").dataset.status = "to-watch";
         }
       });
