@@ -5,10 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Stream Stack</title>
 
-  <!-- DaisyUI CSS -->
-  <link rel="stylesheet" href="daisyui@5.css" />
-  <!-- Custom CSS -->
+  <!-- DaisyUI + Tailwind -->
+  <link rel="stylesheet" href="daisyUI/daisyui@5.css" />
+  <script src="daisyUI/tailwindcss_browser@4.js"></script>
+
+  <!-- Custom styles -->
   <link rel="stylesheet" href="custom.css" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
@@ -34,10 +37,9 @@
       <a class="tab" data-filter="watched">Watched</a>
     </div>    
 
-    <!-- Divider line -->
     <hr class="divider" />
 
-    <!-- Single unified list container -->
+    <!-- List of shows -->
     <div class="list flex flex-col gap-3">
       <div class="list-item" data-status="to-watch">
         <div class="entry-content">
@@ -111,6 +113,7 @@
   </div>
 
   <!-- Scripts -->
+  <script src="scripts/sidepanel.js"></script>
   <script src="js/tabs.js"></script>
   <script src="js/settings.js"></script>
   <script src="js/eyeToggle.js"></script>
