@@ -12,11 +12,22 @@
   "background": {
     "service_worker": "scripts/service-worker.js"
   },
-  "permissions": ["sidePanel", "tabs", "activeTab"],
+  "permissions": ["sidePanel", "tabs", "activeTab", "storage"],
   "content_scripts" : [
     {
       "js": ["scripts/prime.js"],
-      "matches" : ["https://www.amazon.com/gp/video/detail/*"]
+      "matches" : [
+        "*://*.amazon.com/gp/video/*",
+        "*://*.amazon.com/Prime-Video/*",
+        "*://*.primevideo.com/*",
+        "*://*.amazon.com/*"
+      ],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": ["*://*.netflix.com/*"],
+      "js": ["scripts/netflix.js"],
+      "run_at": "document_idle"
     }
   ]
 }
