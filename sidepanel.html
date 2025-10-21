@@ -5,12 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Stream Stack</title>
 
-  <!-- DaisyUI + Tailwind -->
-  <link rel="stylesheet" href="daisyUI/daisyui@5.css" />
-  <script src="daisyUI/tailwindcss_browser@4.js"></script>
-
+  <!-- DaisyUI CSS -->
+  <link rel="stylesheet" href="daisyui@5.css" />
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="custom.css" />
 </head>
 
 <body>
@@ -23,7 +21,7 @@
 
     <!-- Search bar -->
     <div class="form-control mb-6">
-      <div class="flex items-center gap-2">
+      <div class="flex">
         <span>🔍</span>
         <input type="text" placeholder="Search watchlist..." class="input" />
       </div>
@@ -34,11 +32,12 @@
       <a class="tab tab-active" data-filter="all">All</a>
       <a class="tab" data-filter="to-watch">Unwatched</a>
       <a class="tab" data-filter="watched">Watched</a>
-    </div>
+    </div>    
 
+    <!-- Divider line -->
     <hr class="divider" />
 
-    <!-- Unified list -->
+    <!-- Single unified list container -->
     <div class="list flex flex-col gap-3">
       <div class="list-item" data-status="to-watch">
         <div class="entry-content">
@@ -69,7 +68,27 @@
           <img src="icons/eye-closed.png" alt="Toggle Watched" class="eye-icon" />
         </div>
       </div>
-    </div>
+
+      <div class="list-item" data-status="to-watch">
+        <div class="entry-content">
+          <div class="left-side">
+            <span class="entry-title">Another Netflix Show</span>
+            <span class="badge badge-netflix">Netflix</span>
+          </div>
+          <img src="icons/eye-open.png" alt="Toggle Watched" class="eye-icon" />
+        </div>
+      </div>
+
+      <div class="list-item" data-status="to-watch">
+        <div class="entry-content">
+          <div class="left-side">
+            <span class="entry-title">Yet Another Show</span>
+            <span class="badge badge-prime">Prime</span>
+          </div>
+          <img src="icons/eye-open.png" alt="Toggle Watched" class="eye-icon" />
+        </div>
+      </div>
+    </div>  
 
     <!-- Footer -->
     <div class="card-footer">
@@ -92,7 +111,6 @@
   </div>
 
   <!-- Scripts -->
-  <script src="scripts/sidepanel.js"></script>
   <script src="js/tabs.js"></script>
   <script src="js/settings.js"></script>
   <script src="js/eyeToggle.js"></script>
