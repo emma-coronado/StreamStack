@@ -1,20 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Stream Stack</title>
-        <link rel="stylesheet" href="style.css">
-        <link rel="stylesheet" href="daisyUI/daisyui@5.css">
-    </head>
-    <body>
-        
-        <script src="daisyUI/tailwindcss_browser@4.js"></script>
-        <div style="padding: 12px;">
-            <h2 style="margin: 0 0 8px 0;">StreamStack</h2>
-            <ul id="ss-list" style="list-style: none; padding: 0; margin: 0;"></ul>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stream Stack</title>
+
+  <!-- DaisyUI + Tailwind -->
+  <link rel="stylesheet" href="daisyUI/daisyui@5.css" />
+  <script src="daisyUI/tailwindcss_browser@4.js"></script>
+
+  <!-- Custom styles -->
+  <link rel="stylesheet" href="custom.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="card">
+    <!-- Header -->
+    <div class="card-header">
+      <h2 class="card-title">Stream Stack</h2>
+      <p class="subtitle">4 items to watch</p>
+    </div>
+
+    <!-- Search bar -->
+    <div class="form-control mb-6">
+      <div class="flex">
+        <span>🔍</span>
+        <input type="text" placeholder="Search watchlist..." class="input" />
+      </div>
+    </div>
+
+    <!-- Tabs -->
+    <div class="tabs">
+      <a class="tab tab-active" data-filter="all">All</a>
+      <a class="tab" data-filter="to-watch">Unwatched</a>
+      <a class="tab" data-filter="watched">Watched</a>
+    </div>    
+
+    <hr class="divider" />
+
+    <!-- List of shows -->
+    <div class="list flex flex-col gap-3">
+      <div class="list-item" data-status="to-watch">
+        <div class="entry-content">
+          <div class="left-side">
+            <span class="entry-title">Stranger Things</span>
+            <span class="badge badge-netflix">Netflix</span>
+          </div>
+          <img src="icons/eye-open.png" alt="Toggle Watched" class="eye-icon" />
         </div>
-          
-        <script src="scripts/sidepanel.js"></script>
-    </body>
+      </div>
+
+      <div class="list-item" data-status="to-watch">
+        <div class="entry-content">
+          <div class="left-side">
+            <span class="entry-title">The Terminal List</span>
+            <span class="badge badge-prime">Prime</span>
+          </div>
+          <img src="icons/eye-open.png" alt="Toggle Watched" class="eye-icon" />
+        </div>
+      </div>
+
+      <div class="list-item" data-status="watched">
+        <div class="entry-content">
+          <div class="left-side">
+            <span class="entry-title">Peacock Original Movie</span>
+            <span class="badge badge-peacock">Peacock</span>
+          </div>
+          <img src="icons/eye-closed.png" alt="Toggle Watched" class="eye-icon" />
+        </div>
+      </div>
+
+      <div class="list-item" data-status="to-watch">
+        <div class="entry-content">
+          <div class="left-side">
+            <span class="entry-title">Another Netflix Show</span>
+            <span class="badge badge-netflix">Netflix</span>
+          </div>
+          <img src="icons/eye-open.png" alt="Toggle Watched" class="eye-icon" />
+        </div>
+      </div>
+
+      <div class="list-item" data-status="to-watch">
+        <div class="entry-content">
+          <div class="left-side">
+            <span class="entry-title">Yet Another Show</span>
+            <span class="badge badge-prime">Prime</span>
+          </div>
+          <img src="icons/eye-open.png" alt="Toggle Watched" class="eye-icon" />
+        </div>
+      </div>
+    </div>  
+
+    <!-- Footer -->
+    <div class="card-footer">
+      <span class="item-count">4 items</span>
+      <span class="settings" id="settings-btn">⚙️</span>
+
+      <!-- Settings popup -->
+      <div class="settings-popup" id="settings-popup">
+        <div class="popup-item" id="empty-list">🗑️ Empty List</div>
+        <div class="popup-item" id="restore-list">♻️ Restore List</div>
+        <div class="popup-item" id="dark-mode-item">
+          🌙 Dark Mode
+          <label class="switch">
+            <input type="checkbox" id="dark-toggle">
+            <span class="slider round"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="scripts/sidepanel.js"></script>
+  <script src="js/tabs.js"></script>
+  <script src="js/settings.js"></script>
+  <script src="js/eyeToggle.js"></script>
+</body>
 </html>
