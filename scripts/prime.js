@@ -5,7 +5,7 @@ const buttonHTML = `
     class="btn injected-btn _1jWggM dFF2zC _3_H2aX fbl-play-btn fbl-btn _2Pw7le" 
     style="margin-top:16px"
   >
-    Add To StreamStack
+    Add to StreamStack
   </button>
 `;
 
@@ -26,7 +26,7 @@ function getPrimeTitle() {
 function onClick(btn) {
   const title = getPrimeTitle() || "Unknown Title";
   console.log("[StreamStack] Prime: Adding title:", title);
-  alert(`${title} on Prime Video`);
+  // alert(`${title} on Prime Video`);
 
   chrome.runtime.sendMessage({
             action: "addItem",
