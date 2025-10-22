@@ -12,7 +12,12 @@
   "background": {
     "service_worker": "scripts/service-worker.js"
   },
-  "permissions": ["sidePanel", "tabs", "activeTab"],
+  "permissions": [
+    "sidePanel", 
+    "tabs", 
+    "activeTab", 
+    "storage"
+  ],
   "content_scripts" : [
     {
       "js": ["scripts/prime.js"],
