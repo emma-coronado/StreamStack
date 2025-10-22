@@ -5,7 +5,7 @@ const buttonHTML = `
     class="btn injected-btn _1jWggM dFF2zC _3_H2aX fbl-play-btn fbl-btn _2Pw7le" 
     style="margin-top:16px"
   >
-    StreamStack Add
+    Add To StreamStack
   </button>
 `;
 
@@ -28,30 +28,39 @@ function onClick(btn) {
   console.log("[StreamStack] Prime: Adding title:", title);
   alert(`${title} on Prime Video`);
 
-  chrome.storage.local.get({ streamstack: [] }, ({ streamstack }) => {
-    console.log("[StreamStack] Prime: Current streamstack:", streamstack);
+  chrome.runtime.sendMessage({
+            action: "addItem",
+            title: title,
+            platform: "Prime",
+            isWatched: false
+        }, response => {
+            console.log(response);
+        });
+
+  // chrome.storage.local.get({ streamstack: [] }, ({ streamstack }) => {
+  //   console.log("[StreamStack] Prime: Current streamstack:", streamstack);
     
-    // Create item with title and platform
-    const item = {
-      title: title,
-      platform: "Prime Video"
-    };
+  //   // Create item with title and platform
+  //   const item = {
+  //     title: title,
+  //     platform: "Prime Video"
+  //   };
     
-    // Check if title already exists (case insensitive)
-    const exists = streamstack.some(existing => 
-      existing.title && existing.title.toLowerCase() === title.toLowerCase()
-    );
+  //   // Check if title already exists (case insensitive)
+  //   const exists = streamstack.some(existing => 
+  //     existing.title && existing.title.toLowerCase() === title.toLowerCase()
+  //   );
     
-    if (!exists) {
-      streamstack.push(item);
-      console.log("[StreamStack] Prime: Updated streamstack:", streamstack);
-      chrome.storage.local.set({ streamstack }, () => {
-        console.log("[StreamStack] Prime: Storage updated successfully");
-      });
-    } else {
-      console.log("[StreamStack] Prime: Title already exists in streamstack");
-    }
-  });
+  //   if (!exists) {
+  //     streamstack.push(item);
+  //     console.log("[StreamStack] Prime: Updated streamstack:", streamstack);
+  //     chrome.storage.local.set({ streamstack }, () => {
+  //       console.log("[StreamStack] Prime: Storage updated successfully");
+  //     });
+  //   } else {
+  //     console.log("[StreamStack] Prime: Title already exists in streamstack");
+  //   }
+  // });
 
   // quick visual feedback
   if (btn) {
