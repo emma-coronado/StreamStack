@@ -35,30 +35,39 @@ function getNetflixTitle() {
 function onClick(btn) {
   const title = getNetflixTitle() || "Unknown Title";
   console.log("[StreamStack] Netflix: Adding title:", title);
-  alert(`${title} on Netflix`);
+  // alert(`${title} on Netflix`);
 
-  chrome.storage.local.get({ streamstack: [] }, ({ streamstack }) => {    
-    // Create item with title and platform
-    const item = {
-      title: title,
-      platform: "Netflix"
-    };
+  chrome.runtime.sendMessage({
+            action: "addItem",
+            title: title,
+            platform: "Netflix",
+            isWatched: false
+        }, response => {
+            console.log(response);
+        });
+
+  // chrome.storage.local.get({ streamstack: [] }, ({ streamstack }) => {    
+  //   // Create item with title and platform
+  //   const item = {
+  //     title: title,
+  //     platform: "Netflix"
+  //   };
     
-    // Check if title already exists (case insensitive)
-    const exists = streamstack.some(existing => 
-      existing.title && existing.title.toLowerCase() === title.toLowerCase()
-    );
+  //   // Check if title already exists (case insensitive)
+  //   const exists = streamstack.some(existing => 
+  //     existing.title && existing.title.toLowerCase() === title.toLowerCase()
+  //   );
     
-    if (!exists) {
-      streamstack.push(item);
-      console.log("[StreamStack] Netflix: Updated streamstack:", streamstack);
-      chrome.storage.local.set({ streamstack }, () => {
-        console.log("[StreamStack] Netflix: Storage updated successfully");
-      });
-    } else {
-      console.log("[StreamStack] Netflix: Title already exists in streamstack");
-    }
-  });
+  //   if (!exists) {
+  //     streamstack.push(item);
+  //     console.log("[StreamStack] Netflix: Updated streamstack:", streamstack);
+  //     chrome.storage.local.set({ streamstack }, () => {
+  //       console.log("[StreamStack] Netflix: Storage updated successfully");
+  //     });
+  //   } else {
+  //     console.log("[StreamStack] Netflix: Title already exists in streamstack");
+  //   }
+  // });
 
   if (btn) {
     btn.textContent = "Added";
@@ -70,7 +79,7 @@ function injectRightOfThumbs(root = document) {
   const thumbs = root.querySelector(THUMBS_SELECTOR) || document.querySelector(THUMBS_SELECTOR);
     
   if (!thumbs) {
-    console.log("[StreamStack] Thumbs button not found, trying alternative selectors...");
+    // console.log("[StreamStack] Thumbs button not found, trying alternative selectors...");
     
     // Try alternative selectors
     const altSelectors = [
@@ -83,12 +92,12 @@ function injectRightOfThumbs(root = document) {
     for (const selector of altSelectors) {
       const altThumbs = document.querySelector(selector);
       if (altThumbs) {
-        console.log("[StreamStack] Found alternative thumbs button with selector:", selector);
+        // console.log("[StreamStack] Found alternative thumbs button with selector:", selector);
         return injectButton(altThumbs);
       }
     }
     
-    console.log("[StreamStack] No thumbs button found with any selector");
+    // console.log("[StreamStack] No thumbs button found with any selector");
     return false;
   }
   
