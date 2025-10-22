@@ -1,0 +1,26 @@
+{
+  "name": "streamstack",
+  "version": "1.0.0",
+  "description": "Initial template developed with the help of [Chrome's Site-specific side panel example](https://github.com/GoogleChrome/chrome-extensions-samples/tree/main/functional-samples/cookbook.sidepanel-site-specific) (open source resource for developers)",
+  "main": "service-worker.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/emma-coronado/StreamStack.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/emma-coronado/StreamStack/issues"
+  },
+  "homepage": "https://github.com/emma-coronado/StreamStack#readme",
+  "dependencies": {
+    "daisyui": "^5.3.7"
+  },
+  "devDependencies": {
+    "tailwindcss": "^4.1.14"
+  }
+}
