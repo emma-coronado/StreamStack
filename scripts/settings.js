@@ -5,13 +5,22 @@ const emptyList = document.getElementById('empty-list');
 const restoreList = document.getElementById('restore-list'); // new
 const listContainer = document.querySelector('.list');
 
-// Save original list items for restoring
-const originalListItems = [
-  { title: 'Stranger Things', platform: 'Netflix', status: 'to-watch' },
-  { title: 'The Terminal List', platform: 'Prime', status: 'to-watch' },
-  { title: 'Peacock Original Movie', platform: 'Peacock', status: 'watched' },
-  { title: 'Another Netflix Show', platform: 'Netflix', status: 'to-watch' }
-];
+// Store original list items for restoring
+let originalListItems = [];
+
+// Get all list items via messaging
+async function getAllListItems() {
+  return new Promise((resolve) => {
+    chrome.runtime.sendMessage({ action: "getAllItems" }, (response) => {
+      resolve(response || []);
+    });
+  });
+}
+
+// Initialize original list items on load
+(async () => {
+  originalListItems = await getAllListItems();
+})();
 
 // Toggle popup visibility
 settingsBtn.addEventListener('click', () => {
@@ -42,19 +51,22 @@ emptyList.addEventListener('click', () => {
 });
 
 // Restore the list
-restoreList.addEventListener('click', () => {
+restoreList.addEventListener('click', async () => {
+  // Get fresh data from storage
+  const items = await getAllListItems();
+  
   listContainer.innerHTML = '';
-  originalListItems.forEach(item => {
+  items.forEach(item => {
     const div = document.createElement('div');
     div.className = 'list-item';
-    div.dataset.status = item.status;
+    div.dataset.status = item.watched ? true : false;
     div.innerHTML = `
       <span class="entry-title">${item.title}</span>
       <span class="badge badge-${item.platform.toLowerCase()}">${item.platform}</span>
     `;
     listContainer.appendChild(div);
   });
-  document.querySelector('.item-count').textContent = `${originalListItems.length} items`;
+  document.querySelector('.item-count').textContent = `${items.length} items`;
   settingsPopup.style.display = 'none';
 });
 
