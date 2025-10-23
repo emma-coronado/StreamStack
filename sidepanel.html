@@ -6,7 +6,7 @@
   <title>Stream Stack</title>
 
   <!-- DaisyUI CSS -->
-  <link rel="stylesheet" href="daisyui@5.css" />
+  <link rel="stylesheet" href="daisyUI/daisyui@5.css" />
   <!-- Custom CSS -->
   <link rel="stylesheet" href="custom.css" />
 </head>
@@ -16,14 +16,14 @@
     <!-- Header -->
     <div class="card-header">
       <h2 class="card-title">Stream Stack</h2>
-      <p class="subtitle">4 items to watch</p>
+      <p class="subtitle" id="item-count">0 items</p>
     </div>
 
     <!-- Search bar -->
     <div class="form-control mb-6">
       <div class="flex">
         <span>🔍</span>
-        <input type="text" placeholder="Search watchlist..." class="input" />
+        <input type="text" placeholder="Search watchlist..." class="input" id="search-input" />
       </div>
     </div>
 
@@ -37,14 +37,14 @@
     <!-- Divider line -->
     <hr class="divider" />
 
-    <!-- Single unified list container -->
-    <div class="list flex flex-col gap-3">
-      
-    </div>  
+    <!-- Unified list container -->
+    <ul id="ss-list" class="list">
+      <!-- JS will dynamically render list items here -->
+    </ul>  
 
     <!-- Footer -->
     <div class="card-footer">
-      <span class="item-count">4 items</span>
+      <span class="item-count" id="footer-item-count">0 items</span>
       <span class="settings" id="settings-btn">⚙️</span>
 
       <!-- Settings popup -->
@@ -66,6 +66,6 @@
   <script src="scripts/tabs.js"></script>
   <script src="scripts/settings.js"></script>
   <script src="scripts/eyeToggle.js"></script>
-  <script src="scripts/popUpBtn.js"></script>
+  <script src="scripts/sidepanel.js"></script>
 </body>
 </html>
