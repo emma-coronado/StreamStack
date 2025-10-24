@@ -7,6 +7,7 @@ const listContainer = document.querySelector('.list');
 const itemCount = document.querySelector('.item-count');
 const subtitle = document.querySelector('.card-header .subtitle');
 const refreshBtn = document.getElementById('refresh-btn');
+const searchInput = document.querySelector('.form-control input');
 
 
 // Store original list items for restoring
@@ -63,6 +64,8 @@ async function refreshList() {
   const toWatchCount = items.filter(item => !item.watched).length;
   subtitle.textContent = `${toWatchCount} item${toWatchCount !== 1 ? 's' : ''} to watch`;
   itemCount.textContent = `${items.length} item${items.length !== 1 ? 's' : ''}`;
+
+  searchInput.dispatchEvent(new Event('input'));
 }
 
 async function addNewItem(title, platform, watched) {
@@ -90,6 +93,15 @@ async function updateWatchStatus(title, platform, watched) {
   }
   return { success: false, message: "Item not found" };
 }
+
+searchInput.addEventListener("input", () => {
+  const query = searchInput.value.toLowerCase();
+  const items = listContainer.querySelectorAll(".list-item"); // use your list container
+  items.forEach(item => {
+    const title = item.querySelector(".entry-title").textContent.toLowerCase();
+    item.style.display = title.includes(query) ? "flex" : "none";
+  });
+});
 
 // --- INITIALIZATION ---
 
