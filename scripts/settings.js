@@ -48,6 +48,17 @@ async function refreshList() {
   itemCount.textContent = `${items.length} item${items.length !== 1 ? 's' : ''}`;
 }
 
+async function addNewItem(title, platform, watched) {
+  await new Promise((resolve) => {
+    chrome.runtime.sendMessage(
+      { action: "addItem", title, platform, isWatched: watched },
+      resolve
+    );
+  });
+
+  // Refresh the list immediately after adding
+  await refreshList();
+}
 
 // --- INITIALIZATION ---
 
@@ -96,7 +107,16 @@ document.addEventListener('click', (e) => {
   if (!settingsBtn.contains(e.target) && !settingsPopup.contains(e.target)) {
     settingsPopup.style.display = 'none';
   }
+
 });
+document.querySelectorAll('.add-btn').forEach(button => {
+  button.addEventListener('click', () => {
+    const title = button.dataset.title;
+    const platform = button.dataset.platform;
+    addNewItem(title, platform, false); 
+  });
+});
+
 
 // --- LIST UPDATE LISTENER ---
 
