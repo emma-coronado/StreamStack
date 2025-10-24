@@ -70,7 +70,6 @@ restoreList.addEventListener('click', async () => {
   settingsPopup.style.display = 'none';
 });
 
-// Optional: click outside to close popup
 document.addEventListener('click', (e) => {
   if (!settingsBtn.contains(e.target) && !settingsPopup.contains(e.target)) {
     settingsPopup.style.display = 'none';
