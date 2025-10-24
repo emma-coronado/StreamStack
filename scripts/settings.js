@@ -34,25 +34,36 @@ async function refreshList() {
     const eyeSrc = item.watched ? 'icons/eye-closed.png' : 'icons/eye-open.png';
 
     div.innerHTML = `
-      <div class="flex flex-col">
+      <div class="flex flex-col left-side">
         <span class="entry-title">${item.title}</span>
         <span class="badge badge-${item.platform.toLowerCase()}">${item.platform}</span>
       </div>
-      <img src="${eyeSrc}" alt="Toggle Watched" class="eye-icon cursor-pointer" width="24" height="24" />
+
+      <div class="right-side flex items-center gap-2">
+        <img src="${eyeSrc}" alt="Toggle Watched" class="eye-icon cursor-pointer" width="24" height="24" />
+        <img src="icons/remove.png" alt="Remove" class="remove-icon cursor-pointer" width="18" height="18" />
+      </div>
     `;
+
+    // Add remove functionality
+    div.querySelector('.remove-icon').addEventListener('click', async () => {
+      await chrome.runtime.sendMessage({
+        action: "deleteItem",
+        title: item.title,
+        platform: item.platform
+      });
+      await refreshList();
+    });
 
     listContainer.appendChild(div);
   });
 
-  // Count the number of unwatched items
+  // Update counts
   const toWatchCount = items.filter(item => !item.watched).length;
-
-  // Update the subtitle
   subtitle.textContent = `${toWatchCount} item${toWatchCount !== 1 ? 's' : ''} to watch`;
-
-  // Update total item count in footer
   itemCount.textContent = `${items.length} item${items.length !== 1 ? 's' : ''}`;
 }
+
 
 
 
