@@ -9,8 +9,6 @@ const subtitle = document.querySelector('.card-header .subtitle');
 const refreshBtn = document.getElementById('refresh-btn');
 
 
-
-
 // Store original list items for restoring
 let originalListItems = [];
 
@@ -67,10 +65,6 @@ async function refreshList() {
   itemCount.textContent = `${items.length} item${items.length !== 1 ? 's' : ''}`;
 }
 
-
-
-
-
 async function addNewItem(title, platform, watched) {
   await new Promise((resolve) => {
     chrome.runtime.sendMessage(
@@ -118,9 +112,31 @@ emptyList.addEventListener('click', async () => {
 
 
 restoreList.addEventListener('click', async () => {
+  const currentItems = await getAllListItems();
+
+  // Find items that are missing from currentItems
+  const missingItems = originalListItems.filter(origItem => {
+    return !currentItems.some(
+      curItem =>
+        curItem.title === origItem.title &&
+        curItem.platform === origItem.platform
+    );
+  });
+
+  // Add back missing items
+  for (const item of missingItems) {
+    await chrome.runtime.sendMessage({
+      action: "addItem",
+      title: item.title,
+      platform: item.platform,
+      isWatched: item.watched
+    });
+  }
+
   await refreshList();
   settingsPopup.style.display = 'none';
 });
+
 
 refreshBtn.addEventListener('click', async () => {
   await refreshList();
