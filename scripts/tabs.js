@@ -1,5 +1,4 @@
 const tabs = document.querySelectorAll('.tab');
-const items = document.querySelectorAll('.list-item');
 
 tabs.forEach(tab => {
   tab.addEventListener('click', () => {
@@ -11,7 +10,9 @@ tabs.forEach(tab => {
 
     const filter = tab.dataset.filter;
 
-    // Show/hide list items
+    // Query current list items dynamically
+    const items = document.querySelectorAll('.list-item');
+
     items.forEach(item => {
       if (filter === 'all' || item.dataset.status === filter) {
         item.style.display = 'flex';

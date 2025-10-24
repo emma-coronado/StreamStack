@@ -102,13 +102,15 @@ body {
   border-radius: 0.5rem;
   background-color: #ffffff !important;
   box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  display: flex;             
+  flex-direction: row;    
+  justify-content: space-between; 
+  align-items: center;          
   padding: 0.75rem 1rem;
   transition: transform 0.1s ease, box-shadow 0.1s ease;
   box-sizing: border-box;
 }
+
 
 .list-item:hover {
   transform: translateY(-2px);
@@ -254,9 +256,45 @@ body {
 .left-side {
   display: flex;
   flex-direction: column;
-  align-items: flex-start; 
+  align-items: flex-start;
   gap: 0.25rem;
-  flex-grow: 1;        
+}
+
+.right-side {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.remove-icon {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  border-radius: 50%;
+  background-color: rgba(255,255,255,0.8);
+  padding: 2px;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.remove-icon:hover {
+  background-color: #ff4d4d; /* red on hover */
+  transform: scale(1.1);
+}
+
+.refresh-icon {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.refresh-icon:hover {
+  transform: rotate(20deg) scale(1.2);
+  opacity: 1;
 }
 
 .eye-icon {

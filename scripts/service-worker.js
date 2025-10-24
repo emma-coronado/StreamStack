@@ -30,6 +30,9 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
             case "updateWatchStatus":
                 sendResponse(await updateWatchStatus(message.title, message.platform, message.isWatched));
                 break;
+            case "toggleWatched": 
+                sendResponse(await updateWatchStatus(message.title, message.platform, message.watched));
+                break;
             case "deleteItem":
                 sendResponse(await deleteItem(message.title, message.platform));
                 break;
@@ -41,5 +44,6 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
                 sendResponse({success:false, message: "Unknown message type"});
         }
     })()
-    return true; // indicates that we will send a response asynchronously
+    return true;
 });
+
