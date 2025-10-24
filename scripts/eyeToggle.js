@@ -3,7 +3,6 @@ document.addEventListener("click", (event) => {
     const icon = event.target;
     const listItem = icon.closest(".list-item");
 
-    // Toggle icon and dataset
     if (icon.src.includes("icons/eye-open.png")) {
       icon.src = "icons/eye-closed.png";
       listItem.dataset.status = "watched";
@@ -12,11 +11,13 @@ document.addEventListener("click", (event) => {
       listItem.dataset.status = "to-watch";
     }
 
-    // restore toggle status when list is restored
     const title = listItem.querySelector(".entry-title").textContent;
+    const platform = listItem.querySelector(".badge").textContent; 
+
     chrome.runtime.sendMessage({
       action: "toggleWatched",
       title,
+      platform,
       watched: listItem.dataset.status === "watched"
     });
   }
