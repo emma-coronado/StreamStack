@@ -281,6 +281,22 @@ body {
   transform: scale(1.1);
 }
 
+.refresh-icon {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.refresh-icon:hover {
+  transform: rotate(20deg) scale(1.2);
+  opacity: 1;
+}
+
 .eye-icon {
   width: 20px;
   height: 20px;

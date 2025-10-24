@@ -6,6 +6,9 @@ const restoreList = document.getElementById('restore-list');
 const listContainer = document.querySelector('.list');
 const itemCount = document.querySelector('.item-count');
 const subtitle = document.querySelector('.card-header .subtitle');
+const refreshBtn = document.getElementById('refresh-btn');
+
+
 
 
 // Store original list items for restoring
@@ -119,12 +122,17 @@ restoreList.addEventListener('click', async () => {
   settingsPopup.style.display = 'none';
 });
 
+refreshBtn.addEventListener('click', async () => {
+  await refreshList();
+});
+
 document.addEventListener('click', (e) => {
   if (!settingsBtn.contains(e.target) && !settingsPopup.contains(e.target)) {
     settingsPopup.style.display = 'none';
   }
 
 });
+
 document.querySelectorAll('.add-btn').forEach(button => {
   button.addEventListener('click', () => {
     const title = button.dataset.title;
