@@ -72,9 +72,23 @@ async function addNewItem(title, platform, watched) {
       resolve
     );
   });
+  
 
   // Refresh the list immediately after adding
   await refreshList();
+}
+
+async function updateWatchStatus(title, platform, watched) {
+  const items = await getAllItems();
+  const index = items.findIndex(
+      item => item.title === title && item.platform === platform
+  );
+  if (index !== -1) {
+      items[index].watched = watched; // update the watched state
+      await chrome.storage.local.set({ items });
+      return { success: true };
+  }
+  return { success: false, message: "Item not found" };
 }
 
 // --- INITIALIZATION ---
@@ -114,7 +128,6 @@ emptyList.addEventListener('click', async () => {
 restoreList.addEventListener('click', async () => {
   const currentItems = await getAllListItems();
 
-  // Find items that are missing from currentItems
   const missingItems = originalListItems.filter(origItem => {
     return !currentItems.some(
       curItem =>
@@ -123,7 +136,6 @@ restoreList.addEventListener('click', async () => {
     );
   });
 
-  // Add back missing items
   for (const item of missingItems) {
     await chrome.runtime.sendMessage({
       action: "addItem",
