@@ -28,17 +28,26 @@ async function refreshList() {
 
   items.forEach(item => {
     const div = document.createElement('div');
-    div.className = 'list-item';
-    div.dataset.status = item.watched ? 'true' : 'false';
+    div.className = 'list-item flex justify-between items-center';
+    div.dataset.status = item.watched ? 'watched' : 'to-watch';
+
+    // Determine which icon to use
+    const eyeSrc = item.watched ? 'icons/eye-closed.png' : 'icons/eye-open.png';
+
     div.innerHTML = `
-      <span class="entry-title">${item.title}</span>
-      <span class="badge badge-${item.platform.toLowerCase()}">${item.platform}</span>
+      <div class="flex flex-col">
+        <span class="entry-title">${item.title}</span>
+        <span class="badge badge-${item.platform.toLowerCase()}">${item.platform}</span>
+      </div>
+      <img src="${eyeSrc}" alt="Toggle Watched" class="eye-icon cursor-pointer" width="24" height="24" />
     `;
+
     listContainer.appendChild(div);
   });
 
   itemCount.textContent = `${items.length} item${items.length !== 1 ? 's' : ''}`;
 }
+
 
 // --- INITIALIZATION ---
 
@@ -91,8 +100,6 @@ document.addEventListener('click', (e) => {
 
 // --- LIST UPDATE LISTENER ---
 
-// Optional: if your “Add” button sends a message when new items are added
-// this will automatically refresh the list without needing “Restore”.
 chrome.runtime.onMessage.addListener((message) => {
   if (message.action === 'itemAdded' || message.action === 'listUpdated') {
     refreshList();
