@@ -5,13 +5,14 @@ const emptyList = document.getElementById('empty-list');
 const restoreList = document.getElementById('restore-list');
 const listContainer = document.querySelector('.list');
 const itemCount = document.querySelector('.item-count');
+const subtitle = document.querySelector('.card-header .subtitle');
+
 
 // Store original list items for restoring
 let originalListItems = [];
 
 // --- HELPERS ---
 
-// Get all list items from background or storage
 async function getAllListItems() {
   return new Promise((resolve) => {
     chrome.runtime.sendMessage({ action: "getAllItems" }, (response) => {
@@ -20,7 +21,6 @@ async function getAllListItems() {
   });
 }
 
-// Render list items in the UI
 async function refreshList() {
   const items = await getAllListItems();
 
@@ -31,7 +31,6 @@ async function refreshList() {
     div.className = 'list-item flex justify-between items-center';
     div.dataset.status = item.watched ? 'watched' : 'to-watch';
 
-    // Determine which icon to use
     const eyeSrc = item.watched ? 'icons/eye-closed.png' : 'icons/eye-open.png';
 
     div.innerHTML = `
@@ -45,8 +44,18 @@ async function refreshList() {
     listContainer.appendChild(div);
   });
 
+  // Count the number of unwatched items
+  const toWatchCount = items.filter(item => !item.watched).length;
+
+  // Update the subtitle
+  subtitle.textContent = `${toWatchCount} item${toWatchCount !== 1 ? 's' : ''} to watch`;
+
+  // Update total item count in footer
   itemCount.textContent = `${items.length} item${items.length !== 1 ? 's' : ''}`;
 }
+
+
+
 
 async function addNewItem(title, platform, watched) {
   await new Promise((resolve) => {
@@ -68,7 +77,6 @@ async function addNewItem(title, platform, watched) {
   await refreshList();
 })();
 
-// Toggle popup visibility
 settingsBtn.addEventListener('click', () => {
   settingsPopup.style.display = settingsPopup.style.display === 'block' ? 'none' : 'block';
 });
@@ -81,7 +89,6 @@ if (localStorage.getItem('darkMode') === 'enabled') {
   darkToggle.checked = true;
 }
 
-// Handle dark mode toggle
 darkToggle.addEventListener('change', () => {
   document.body.classList.toggle('dark-mode');
   localStorage.setItem('darkMode', document.body.classList.contains('dark-mode') ? 'enabled' : 'disabled');
@@ -89,20 +96,18 @@ darkToggle.addEventListener('change', () => {
 
 // --- SETTINGS ACTIONS ---
 
-// Empty the list
-emptyList.addEventListener('click', () => {
-  listContainer.innerHTML = '';
-  itemCount.textContent = '0 items';
+emptyList.addEventListener('click', async () => {
+  await chrome.runtime.sendMessage({ action: "clearAllItems" });
+  await refreshList();
   settingsPopup.style.display = 'none';
 });
 
-// Restore the list from saved items
+
 restoreList.addEventListener('click', async () => {
   await refreshList();
   settingsPopup.style.display = 'none';
 });
 
-// Hide popup when clicking outside of it
 document.addEventListener('click', (e) => {
   if (!settingsBtn.contains(e.target) && !settingsPopup.contains(e.target)) {
     settingsPopup.style.display = 'none';
